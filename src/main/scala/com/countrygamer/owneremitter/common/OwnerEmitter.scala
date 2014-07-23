@@ -16,8 +16,8 @@ object OwnerEmitter extends PluginWrapper {
 	final val pluginID = "owneremitter"
 	final val pluginName = "Owner Emitter"
 
-	@SidedProxy(clientSide = "com.countrygamer.client.ClientProxy",
-		serverSide = "com.countrygamer.common.CommonProxy")
+	@SidedProxy(clientSide = "com.countrygamer.owneremitter.client.ClientProxy",
+		serverSide = "com.countrygamer.owneremitter.common.CommonProxy")
 	var proxy: ProxyWrapper = null
 
 }
