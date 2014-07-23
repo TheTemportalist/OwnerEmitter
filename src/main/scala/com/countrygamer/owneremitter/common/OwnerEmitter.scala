@@ -1,6 +1,7 @@
 package com.countrygamer.owneremitter.common
 
 import com.countrygamer.cgo.wrapper.common.{PluginWrapper, ProxyWrapper}
+import cpw.mods.fml.common.event.{FMLInitializationEvent, FMLPostInitializationEvent, FMLPreInitializationEvent}
 import cpw.mods.fml.common.{Mod, SidedProxy}
 
 /**
@@ -19,5 +20,20 @@ object OwnerEmitter extends PluginWrapper {
 	@SidedProxy(clientSide = "com.countrygamer.owneremitter.client.ClientProxy",
 		serverSide = "com.countrygamer.owneremitter.common.CommonProxy")
 	var proxy: ProxyWrapper = null
+
+	@Mod.EventHandler
+	def preInit(event: FMLPreInitializationEvent): Unit = {
+
+	}
+
+	@Mod.EventHandler
+	def init(event: FMLInitializationEvent): Unit = {
+
+	}
+
+	@Mod.EventHandler
+	def postInit(event: FMLPostInitializationEvent): Unit = {
+
+	}
 
 }
