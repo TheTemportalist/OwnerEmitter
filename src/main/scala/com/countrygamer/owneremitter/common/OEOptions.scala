@@ -17,7 +17,7 @@ object OEOptions extends OptionRegister {
 
 	@SideOnly(Side.CLIENT)
 	override def getGuiConfigClass(): Class[_ <: GuiScreen] = {
-		null
+		classOf[com.countrygamer.owneremitter.client.gui.configFactory.GuiConfig]
 	}
 
 }
