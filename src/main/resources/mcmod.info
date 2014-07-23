@@ -1,0 +1,16 @@
+[
+{
+  "modid": "owneremitter",
+  "name": "Owner Emitter",
+  "description": "Adds a block that emits a redstone signal when the conditions are right.",
+  "version": "${version}",
+  "mcversion": "${mcversion}",
+  "url": "",
+  "updateUrl": "",
+  "authors": ["CountryGamer"],
+  "credits": "",
+  "logoFile": "",
+  "screenshots": [],
+  "dependencies": ["cgo"]
+}
+]
