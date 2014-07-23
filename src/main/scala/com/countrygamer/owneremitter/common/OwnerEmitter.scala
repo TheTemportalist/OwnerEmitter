@@ -1,6 +1,7 @@
 package com.countrygamer.owneremitter.common
 
 import com.countrygamer.cgo.wrapper.common.{PluginWrapper, ProxyWrapper}
+import com.countrygamer.owneremitter.common.block.OEBlocks
 import cpw.mods.fml.common.event.{FMLInitializationEvent, FMLPostInitializationEvent, FMLPreInitializationEvent}
 import cpw.mods.fml.common.{Mod, SidedProxy}
 
@@ -23,7 +24,7 @@ object OwnerEmitter extends PluginWrapper {
 
 	@Mod.EventHandler
 	def preInit(event: FMLPreInitializationEvent): Unit = {
-		super.preInitialize(this.pluginID, this.pluginName, event, this.proxy)
+		super.preInitialize(this.pluginID, this.pluginName, event, this.proxy, OEBlocks)
 
 	}
 
