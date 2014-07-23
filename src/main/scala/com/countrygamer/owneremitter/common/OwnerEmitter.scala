@@ -23,16 +23,19 @@ object OwnerEmitter extends PluginWrapper {
 
 	@Mod.EventHandler
 	def preInit(event: FMLPreInitializationEvent): Unit = {
+		super.preInitialize(this.pluginID, this.pluginName, event, this.proxy)
 
 	}
 
 	@Mod.EventHandler
 	def init(event: FMLInitializationEvent): Unit = {
+		super.initialize(event)
 
 	}
 
 	@Mod.EventHandler
 	def postInit(event: FMLPostInitializationEvent): Unit = {
+		super.postInitialize(event)
 
 	}
 
