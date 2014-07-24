@@ -57,6 +57,7 @@ object OEBlocks extends BlockRegister {
 
 		}
 		OEBlocks.ownerEmitter.setCreativeTab(CreativeTabs.tabRedstone)
+
 		OEBlocks.playerEmitter = new BlockEmitter(OwnerEmitter.pluginID, "Player Emitter",
 			classOf[TEPlayerEmitter])
 		OEBlocks.playerEmitter.setCreativeTab(CreativeTabs.tabRedstone)
