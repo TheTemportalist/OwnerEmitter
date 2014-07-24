@@ -1,11 +1,12 @@
 package com.countrygamer.owneremitter.common.block
 
 import com.countrygamer.cgo.wrapper.common.block.BlockWrapperTE
+import com.countrygamer.owneremitter.common.item.IBEmitter
 import com.countrygamer.owneremitter.common.tile.TEEmitter
 import net.minecraft.block.material.Material
 import net.minecraft.entity.EntityLivingBase
 import net.minecraft.entity.player.EntityPlayer
-import net.minecraft.item.{ItemBlock, ItemStack}
+import net.minecraft.item.ItemStack
 import net.minecraft.tileentity.TileEntity
 import net.minecraft.world.{IBlockAccess, World}
 
@@ -14,9 +15,8 @@ import net.minecraft.world.{IBlockAccess, World}
  *
  * @author CountryGamer
  */
-class BlockEmitter(pluginID: String, name: String, itemBlock: Class[_ <: ItemBlock],
-		tileEntityClass: Class[_ <: TileEntity])
-		extends BlockWrapperTE(Material.rock, pluginID, name, itemBlock, tileEntityClass) {
+class BlockEmitter(pluginID: String, name: String, tileEntityClass: Class[_ <: TileEntity])
+		extends BlockWrapperTE(Material.rock, pluginID, name, classOf[IBEmitter], tileEntityClass) {
 
 	// Default Constructor
 	{
@@ -24,11 +24,6 @@ class BlockEmitter(pluginID: String, name: String, itemBlock: Class[_ <: ItemBlo
 	}
 
 	// End Constructor
-
-	def this(pluginID: String, name: String, tileEntityClass: Class[_ <: TileEntity]) {
-		this(pluginID, name, null, tileEntityClass)
-
-	}
 
 	override def canProvidePower: Boolean = {
 		true
