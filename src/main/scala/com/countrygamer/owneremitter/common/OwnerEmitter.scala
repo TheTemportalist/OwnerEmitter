@@ -15,6 +15,10 @@ import cpw.mods.fml.common.{Mod, SidedProxy}
 	guiFactory = "com.countrygamer.owneremitter.client.gui.configFactory.OEFactory")
 object OwnerEmitter extends PluginWrapper {
 
+	// TODO owner emitter; drop & place with owner
+	// TODO player emitter; drop & place with preferred
+	// TODO owner emitter; tool tip has owner
+
 	final val pluginID = "owneremitter"
 	final val pluginName = "Owner Emitter"
 
