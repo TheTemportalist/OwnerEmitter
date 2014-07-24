@@ -29,7 +29,7 @@ class BlockOwnerEmitter(pluginID: String, name: String)
 			side: Int): Int = {
 		val tileEntity: TileEntity = world.getTileEntity(x, y, z)
 		if (tileEntity != null && tileEntity.isInstanceOf[TEPlayerEmitter])
-			return tileEntity.asInstanceOf[TEPlayerEmitter].getRedstonePower()
+			return tileEntity.asInstanceOf[TEPlayerEmitter].getRedstonePower
 		0
 	}
 
