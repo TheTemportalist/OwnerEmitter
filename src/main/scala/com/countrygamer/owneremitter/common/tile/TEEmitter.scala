@@ -120,7 +120,7 @@ class TEEmitter(name: String) extends TEWrapper(name) {
 			metadata: Int): Unit = {
 		drops.clear()
 
-		val dropStack: ItemStack = new ItemStack()
+		val dropStack: ItemStack = new ItemStack(block, 1, metadata)
 		val tagCom: NBTTagCompound = new NBTTagCompound()
 		this.writePlayersToNBT(tagCom)
 		dropStack.setTagCompound(tagCom)

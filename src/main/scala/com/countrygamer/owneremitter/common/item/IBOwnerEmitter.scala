@@ -3,16 +3,21 @@ package com.countrygamer.owneremitter.common.item
 import java.util
 
 import com.countrygamer.owneremitter.common.block.OEBlocks
+import net.minecraft.block.Block
 import net.minecraft.entity.player.EntityPlayer
 import net.minecraft.item.{Item, ItemBlock, ItemStack}
-import net.minecraft.nbt.NBTTagList
+import net.minecraft.nbt.{NBTTagCompound, NBTTagList}
 
 /**
  *
  *
  * @author CountryGamer
  */
-class IBOwnerEmitter() extends ItemBlock(OEBlocks.ownerEmitter) {
+class IBOwnerEmitter(block: Block) extends ItemBlock(block) {
+
+	{
+
+	}
 
 	override def addInformation(itemStack: ItemStack, player: EntityPlayer,
 			list: util.List[_], isAdvanced: Boolean): Unit = {
@@ -24,7 +29,9 @@ class IBOwnerEmitter() extends ItemBlock(OEBlocks.ownerEmitter) {
 			val playerList: NBTTagList = itemStack.getTagCompound.getTagList("preferredPlayers", 10)
 
 			for (i <- 0 until playerList.tagCount()) {
-				list.add(playerList.getCompoundTagAt(i).getString("username"))
+				val playerTag: NBTTagCompound = playerList.getCompoundTagAt(i)
+				if (playerTag != null)
+					list.asInstanceOf[util.List[String]].add(playerTag.getString("username"))
 			}
 
 		}
