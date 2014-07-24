@@ -97,4 +97,20 @@ class BlockEmitter(pluginID: String, name: String, itemBlock: Class[_ <: ItemBlo
 
 	}
 
+	override def onBlockActivated(world: World, x: Int, y: Int, z: Int, player: EntityPlayer,
+			side: Int, offsetX: Float, offsetY: Float, offsetZ: Float): Boolean = {
+		val tileEntity: TileEntity = world.getTileEntity(x, y, z)
+		tileEntity match {
+			case emitter: TEEmitter =>
+				emitter.addPlayer(player)
+				world.notifyBlocksOfNeighborChange(x, y, z, this)
+				return true
+
+			case _ =>
+
+		}
+
+		false
+	}
+
 }
