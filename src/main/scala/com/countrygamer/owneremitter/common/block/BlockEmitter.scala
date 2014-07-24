@@ -11,8 +11,8 @@ import net.minecraft.world.IBlockAccess
  *
  * @author CountryGamer
  */
-class BlockOwnerEmitter(pluginID: String, name: String)
-		extends BlockWrapperTE(Material.rock, pluginID, name, null, classOf[TEPlayerEmitter]) {
+class BlockEmitter(pluginID: String, name: String, tileEntityClass: Class[_ <: TileEntity])
+		extends BlockWrapperTE(Material.rock, pluginID, name, null, tileEntityClass) {
 
 	// Default Constructor
 	{
