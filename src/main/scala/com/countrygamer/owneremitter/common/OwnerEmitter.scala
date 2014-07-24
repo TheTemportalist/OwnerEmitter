@@ -12,7 +12,7 @@ import cpw.mods.fml.common.{Mod, SidedProxy}
  */
 @Mod(modid = OwnerEmitter.pluginID, name = OwnerEmitter.pluginName, version = "@PLUGIN_VERSION@",
 	modLanguage = "scala",
-	guiFactory = "com.countrygamer.owneremitter.client.gui.configFactor.OEFactory")
+	guiFactory = "com.countrygamer.owneremitter.client.gui.configFactory.OEFactory")
 object OwnerEmitter extends PluginWrapper {
 
 	final val pluginID = "owneremitter"
