@@ -1,7 +1,7 @@
 package com.countrygamer.owneremitter.common.block
 
 import com.countrygamer.cgo.wrapper.common.block.BlockWrapperTE
-import com.countrygamer.owneremitter.common.tile.TEEmitter
+import com.countrygamer.owneremitter.common.tile.TEPlayerEmitter
 import net.minecraft.block.material.Material
 import net.minecraft.tileentity.TileEntity
 import net.minecraft.world.IBlockAccess
@@ -12,7 +12,7 @@ import net.minecraft.world.IBlockAccess
  * @author CountryGamer
  */
 class BlockOwnerEmitter(pluginID: String, name: String)
-		extends BlockWrapperTE(Material.rock, pluginID, name, null, classOf[TEEmitter]) {
+		extends BlockWrapperTE(Material.rock, pluginID, name, null, classOf[TEPlayerEmitter]) {
 
 	// Default Constructor
 	{
@@ -28,8 +28,8 @@ class BlockOwnerEmitter(pluginID: String, name: String)
 	override def isProvidingWeakPower(world: IBlockAccess, x: Int, y: Int, z: Int,
 			side: Int): Int = {
 		val tileEntity: TileEntity = world.getTileEntity(x, y, z)
-		if (tileEntity != null && tileEntity.isInstanceOf[TEEmitter])
-			return tileEntity.asInstanceOf[TEEmitter].getRedstonePower()
+		if (tileEntity != null && tileEntity.isInstanceOf[TEPlayerEmitter])
+			return tileEntity.asInstanceOf[TEPlayerEmitter].getRedstonePower()
 		0
 	}
 

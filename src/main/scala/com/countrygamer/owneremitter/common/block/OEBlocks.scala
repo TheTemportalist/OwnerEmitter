@@ -2,7 +2,7 @@ package com.countrygamer.owneremitter.common.block
 
 import com.countrygamer.cgo.wrapper.common.registries.BlockRegister
 import com.countrygamer.owneremitter.common.OwnerEmitter
-import com.countrygamer.owneremitter.common.tile.TEEmitter
+import com.countrygamer.owneremitter.common.tile.TEPlayerEmitter
 import cpw.mods.fml.common.registry.GameRegistry
 import net.minecraft.block.Block
 import net.minecraft.creativetab.CreativeTabs
@@ -19,7 +19,8 @@ object OEBlocks extends BlockRegister {
 	override def registerTileEntities: Unit = {
 
 		GameRegistry
-				.registerTileEntity(classOf[TEEmitter], OwnerEmitter.pluginID + "_Owner Emitter")
+				.registerTileEntity(classOf[TEPlayerEmitter],
+		            OwnerEmitter.pluginID + "_Owner Emitter")
 
 	}
 
