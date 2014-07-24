@@ -10,7 +10,7 @@ import com.countrygamer.owneremitter.common.block.OEBlocks
  */
 class TEEmitter() extends TEWrapper(OEBlocks.ownerEmitter.getLocalizedName) {
 
-	def getRedstonePower(): Int = {
+	def getRedstonePower: Int = {
 		0
 	}
 
