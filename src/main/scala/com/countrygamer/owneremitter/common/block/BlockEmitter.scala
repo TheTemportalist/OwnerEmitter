@@ -1,11 +1,13 @@
 package com.countrygamer.owneremitter.common.block
 
 import com.countrygamer.cgo.wrapper.common.block.BlockWrapperTE
-import com.countrygamer.owneremitter.common.tile.TEEmitter
+import com.countrygamer.owneremitter.common.tile.{TEEmitter, TEOwnerEmitter, TEPlayerEmitter}
 import net.minecraft.block.material.Material
-import net.minecraft.item.ItemBlock
+import net.minecraft.entity.EntityLivingBase
+import net.minecraft.entity.player.EntityPlayer
+import net.minecraft.item.{ItemBlock, ItemStack}
 import net.minecraft.tileentity.TileEntity
-import net.minecraft.world.IBlockAccess
+import net.minecraft.world.{IBlockAccess, World}
 
 /**
  *
@@ -52,6 +54,40 @@ class BlockEmitter(pluginID: String, name: String, itemBlock: Class[_ <: ItemBlo
 	 */
 	override def hasTileEntityDrops(metadata: Int): Boolean = {
 		true
+	}
+
+	override def onBlockPlacedBy(world: World, x: Int, y: Int, z: Int, entity: EntityLivingBase,
+			itemStack: ItemStack): Unit = {
+		super.onBlockPlacedBy(world, x, y, z, entity, itemStack)
+
+		if (itemStack == null) return
+
+		entity match {
+			case player: EntityPlayer =>
+
+				val tileEntity: TileEntity = world.getTileEntity(x, y, z)
+
+				if (itemStack.hasTagCompound &&
+						itemStack.getTagCompound.hasKey("preferredPlayers")) {
+					tileEntity match {
+						case emitter: TEEmitter =>
+							emitter.readPlayersFromNBT(itemStack.getTagCompound)
+						case _ =>
+					}
+				}
+				else {
+					tileEntity match {
+						case emitter: TEOwnerEmitter =>
+							emitter.setOwner(player)
+						case emitter: TEPlayerEmitter =>
+
+						case _ =>
+					}
+				}
+			case _ =>
+
+		}
+
 	}
 
 }

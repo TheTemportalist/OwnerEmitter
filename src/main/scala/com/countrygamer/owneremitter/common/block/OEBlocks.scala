@@ -7,11 +7,6 @@ import com.countrygamer.owneremitter.common.tile.{TEOwnerEmitter, TEPlayerEmitte
 import cpw.mods.fml.common.registry.GameRegistry
 import net.minecraft.block.Block
 import net.minecraft.creativetab.CreativeTabs
-import net.minecraft.entity.EntityLivingBase
-import net.minecraft.entity.player.EntityPlayer
-import net.minecraft.item.ItemStack
-import net.minecraft.tileentity.TileEntity
-import net.minecraft.world.World
 
 /**
  *
@@ -35,27 +30,7 @@ object OEBlocks extends BlockRegister {
 	override def register(): Unit = {
 
 		OEBlocks.ownerEmitter = new BlockEmitter(OwnerEmitter.pluginID, "Owner Emitter",
-			classOf[IBOwnerEmitter], classOf[TEOwnerEmitter]) {
-
-			override def onBlockPlacedBy(world: World, x: Int, y: Int, z: Int,
-					entity: EntityLivingBase, itemStack: ItemStack): Unit = {
-				super.onBlockPlacedBy(world, x, y, z, entity, itemStack)
-
-				val tileEntity: TileEntity = world.getTileEntity(x, y, z)
-				tileEntity match {
-					case emitter: TEOwnerEmitter =>
-						entity match {
-							case player: EntityPlayer =>
-								emitter.setOwner(player)
-
-							case _ =>
-
-						}
-					case _ =>
-				}
-			}
-
-		}
+			classOf[IBOwnerEmitter], classOf[TEOwnerEmitter])
 		OEBlocks.ownerEmitter.setCreativeTab(CreativeTabs.tabRedstone)
 
 		OEBlocks.playerEmitter = new BlockEmitter(OwnerEmitter.pluginID, "Player Emitter",
