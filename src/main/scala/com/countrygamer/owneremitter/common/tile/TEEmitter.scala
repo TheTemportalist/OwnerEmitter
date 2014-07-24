@@ -4,7 +4,9 @@ import java.util
 import java.util.Random
 
 import com.countrygamer.cgo.wrapper.common.tile.TEWrapper
+import net.minecraft.block.Block
 import net.minecraft.entity.player.EntityPlayer
+import net.minecraft.item.ItemStack
 import net.minecraft.nbt.{NBTTagCompound, NBTTagList}
 import net.minecraft.server.MinecraftServer
 
@@ -43,6 +45,11 @@ class TEEmitter(name: String) extends TEWrapper(name) {
 	override def writeToNBT(tagCom: NBTTagCompound): Unit = {
 		super.writeToNBT(tagCom)
 
+		this.writePlayersToNBT(tagCom)
+
+	}
+
+	def writePlayersToNBT(tagCom: NBTTagCompound): Unit = {
 		val preferredPlayersList: NBTTagList = new NBTTagList()
 		for (i <- 0 until this.getPreferredPlayers().size()) {
 			val playerTag: NBTTagCompound = new NBTTagCompound()
@@ -50,18 +57,21 @@ class TEEmitter(name: String) extends TEWrapper(name) {
 			preferredPlayersList.appendTag(playerTag)
 		}
 		tagCom.setTag("preferredPlayers", preferredPlayersList)
-
 	}
 
 	override def readFromNBT(tagCom: NBTTagCompound): Unit = {
 		super.readFromNBT(tagCom)
 
+		this.readPlayersFromNBT(tagCom)
+
+	}
+
+	def readPlayersFromNBT(tagCom: NBTTagCompound): Unit = {
 		val preferredPlayersList: NBTTagList = tagCom.getTagList("preferredPlayers", 10)
 		this.searchingPlayers.clear()
 		for (i <- 0 until preferredPlayersList.tagCount()) {
 			this.addPlayer(preferredPlayersList.getCompoundTagAt(i).getString("username"))
 		}
-
 	}
 
 	override def updateEntity(): Unit = {
@@ -104,6 +114,19 @@ class TEEmitter(name: String) extends TEWrapper(name) {
 
 	def isPlayerOnline(username: String): Boolean = {
 		this.onlinePlayers.contains(username)
+	}
+
+	override def getDrops(drops: util.ArrayList[ItemStack], block: Block,
+			metadata: Int): Unit = {
+		drops.clear()
+
+		val dropStack: ItemStack = new ItemStack()
+		val tagCom: NBTTagCompound = new NBTTagCompound()
+		this.writePlayersToNBT(tagCom)
+		dropStack.setTagCompound(tagCom)
+
+		drops.add(dropStack)
+
 	}
 
 }
