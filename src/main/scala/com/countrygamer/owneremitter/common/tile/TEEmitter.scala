@@ -79,21 +79,36 @@ class TEEmitter(name: String) extends TEWrapper(name) {
 
 		if (this.random.nextInt(20) == 0) {
 			this.refreshPlayers()
+			this.getWorldObj.notifyBlocksOfNeighborChange(this.xCoord, this.yCoord, this.zCoord,
+				this.getWorldObj.getBlock(this.xCoord, this.yCoord, this.zCoord))
+
 		}
 
 	}
 
 	def refreshPlayers(): Unit = {
-		val serverPlayers: util.List[_] = MinecraftServer.getServer.getConfigurationManager
-				.playerEntityList
 
+		if (MinecraftServer.getServer == null ||
+				MinecraftServer.getServer.getConfigurationManager == null) {
+			return
+		}
+
+		// Get players online
+		var serverPlayers: Array[String] = Array[String]()
+		if (MinecraftServer.getServer.getConfigurationManager != null) {
+			serverPlayers = MinecraftServer.getServer.getConfigurationManager.getAllUsernames
+			//System.out.println("Number of online players = " + serverPlayers.length)
+		}
+
+		// Save previous players online
+		val previousOnlinePlayers: util.List[String] = this.onlinePlayers
+		// Clear the new online players
 		this.onlinePlayers.clear()
-		for (i <- 0 until serverPlayers.size()) {
-			serverPlayers.get(i) match {
-				case player: EntityPlayer =>
-					onlinePlayers.add(player.getCommandSenderName)
-				case _ =>
-			}
+		// Store usernames of all players on the server to the onlinePlayers list
+		for (i <- 0 until serverPlayers.length) {
+
+			onlinePlayers.add(serverPlayers(i))
+
 		}
 
 	}
