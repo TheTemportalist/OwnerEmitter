@@ -3,6 +3,7 @@ package com.countrygamer.owneremitter.common.block
 import com.countrygamer.cgo.wrapper.common.block.BlockWrapperTE
 import com.countrygamer.owneremitter.common.tile.TEPlayerEmitter
 import net.minecraft.block.material.Material
+import net.minecraft.item.ItemBlock
 import net.minecraft.tileentity.TileEntity
 import net.minecraft.world.IBlockAccess
 
@@ -11,8 +12,9 @@ import net.minecraft.world.IBlockAccess
  *
  * @author CountryGamer
  */
-class BlockEmitter(pluginID: String, name: String, tileEntityClass: Class[_ <: TileEntity])
-		extends BlockWrapperTE(Material.rock, pluginID, name, null, tileEntityClass) {
+class BlockEmitter(pluginID: String, name: String, itemBlock: Class[_ <: ItemBlock],
+		tileEntityClass: Class[_ <: TileEntity])
+		extends BlockWrapperTE(Material.rock, pluginID, name, itemBlock, tileEntityClass) {
 
 	// Default Constructor
 	{
@@ -20,6 +22,11 @@ class BlockEmitter(pluginID: String, name: String, tileEntityClass: Class[_ <: T
 	}
 
 	// End Constructor
+
+	def this(pluginID: String, name: String, tileEntityClass: Class[_ <: TileEntity]) {
+		this(pluginID, name, null, tileEntityClass)
+
+	}
 
 	override def canProvidePower: Boolean = {
 		true
