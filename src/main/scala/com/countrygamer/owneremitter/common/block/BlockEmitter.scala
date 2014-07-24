@@ -103,7 +103,9 @@ class BlockEmitter(pluginID: String, name: String, itemBlock: Class[_ <: ItemBlo
 		tileEntity match {
 			case emitter: TEEmitter =>
 				if (player.isSneaking) {
-					emitter.addPlayer(player)
+					if (!emitter.removePlayer(player)) {
+						emitter.addPlayer(player)
+					}
 					world.notifyBlocksOfNeighborChange(x, y, z, this)
 				}
 				else {

@@ -31,12 +31,16 @@ class TEEmitter(name: String) extends TEWrapper(name) {
 		this.preferredPlayers.add(username)
 	}
 
-	def removePlayer(player: EntityPlayer): Unit = {
+	def removePlayer(player: EntityPlayer): Boolean = {
 		this.removePlayer(player.getCommandSenderName)
 	}
 
-	def removePlayer(username: String): Unit = {
-		this.preferredPlayers.remove(username)
+	def removePlayer(username: String): Boolean = {
+		if (this.preferredPlayers.contains(username)) {
+			this.preferredPlayers.remove(username)
+			return true
+		}
+		false
 	}
 
 	def getPreferredPlayers(): util.List[String] = {
