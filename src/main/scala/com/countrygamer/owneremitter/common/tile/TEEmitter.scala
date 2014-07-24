@@ -3,6 +3,7 @@ package com.countrygamer.owneremitter.common.tile
 import java.util
 import java.util.Random
 
+import com.countrygamer.cgo.common.lib.util.Player
 import com.countrygamer.cgo.wrapper.common.tile.TEWrapper
 import net.minecraft.block.Block
 import net.minecraft.entity.player.EntityPlayer
@@ -142,6 +143,26 @@ class TEEmitter(name: String) extends TEWrapper(name) {
 		dropStack.setTagCompound(tagCom)
 
 		drops.add(dropStack)
+
+	}
+
+	def tellPlayerOfList(player: EntityPlayer): Unit = {
+		var playerListString: String = "    "
+		if (this.preferredPlayers.isEmpty) {
+			playerListString = playerListString + "None"
+		}
+		for (i <- 0 until this.preferredPlayers.size()) {
+			if (i != 0) {
+				playerListString = playerListString + ", "
+			}
+			playerListString = playerListString + this.preferredPlayers.get(i)
+
+		}
+
+		if (this.getWorldObj.isRemote) {
+			Player.sendMessageToPlayer(player, "Players following:")
+			Player.sendMessageToPlayer(player, playerListString)
+		}
 
 	}
 

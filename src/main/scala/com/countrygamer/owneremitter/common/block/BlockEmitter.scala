@@ -102,8 +102,13 @@ class BlockEmitter(pluginID: String, name: String, itemBlock: Class[_ <: ItemBlo
 		val tileEntity: TileEntity = world.getTileEntity(x, y, z)
 		tileEntity match {
 			case emitter: TEEmitter =>
-				emitter.addPlayer(player)
-				world.notifyBlocksOfNeighborChange(x, y, z, this)
+				if (player.isSneaking) {
+					emitter.addPlayer(player)
+					world.notifyBlocksOfNeighborChange(x, y, z, this)
+				}
+				else {
+					emitter.tellPlayerOfList(player)
+				}
 				return true
 
 			case _ =>
