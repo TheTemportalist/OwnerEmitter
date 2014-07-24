@@ -47,8 +47,8 @@ class BlockEmitter(pluginID: String, name: String, itemBlock: Class[_ <: ItemBlo
 
 	/**
 	 * Allows for drops from an ICustomDrops tile entity
-	 * @param metadata
-	 * @return
+	 * @param metadata the metadata of the block
+	 * @return whether this block with that metadata has tile drops
 	 */
 	override def hasTileEntityDrops(metadata: Int): Boolean = {
 		true
