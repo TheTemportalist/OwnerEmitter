@@ -11,7 +11,7 @@ import net.minecraft.entity.player.EntityPlayer
 class TEOwnerEmitter() extends TEEmitter(OEBlocks.ownerEmitter.getLocalizedName) {
 
 	def setOwner(player: EntityPlayer): Unit = {
-		this.searchingPlayers.clear()
+		this.preferredPlayers.clear()
 		this.addPlayer(player)
 	}
 

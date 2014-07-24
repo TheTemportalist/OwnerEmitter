@@ -20,14 +20,14 @@ class TEEmitter(name: String) extends TEWrapper(name) {
 	val random: Random = new Random()
 	val onlinePlayers: util.List[String] = new util.ArrayList[String]()
 
-	val searchingPlayers: util.List[String] = new util.ArrayList[String]()
+	val preferredPlayers: util.List[String] = new util.ArrayList[String]()
 
 	def addPlayer(player: EntityPlayer): Unit = {
 		this.addPlayer(player.getCommandSenderName)
 	}
 
 	def addPlayer(username: String): Unit = {
-		this.searchingPlayers.add(username)
+		this.preferredPlayers.add(username)
 	}
 
 	def removePlayer(player: EntityPlayer): Unit = {
@@ -35,11 +35,11 @@ class TEEmitter(name: String) extends TEWrapper(name) {
 	}
 
 	def removePlayer(username: String): Unit = {
-		this.searchingPlayers.remove(username)
+		this.preferredPlayers.remove(username)
 	}
 
 	def getPreferredPlayers(): util.List[String] = {
-		return this.searchingPlayers
+		return this.preferredPlayers
 	}
 
 	override def writeToNBT(tagCom: NBTTagCompound): Unit = {
@@ -68,7 +68,7 @@ class TEEmitter(name: String) extends TEWrapper(name) {
 
 	def readPlayersFromNBT(tagCom: NBTTagCompound): Unit = {
 		val preferredPlayersList: NBTTagList = tagCom.getTagList("preferredPlayers", 10)
-		this.searchingPlayers.clear()
+		this.preferredPlayers.clear()
 		for (i <- 0 until preferredPlayersList.tagCount()) {
 			this.addPlayer(preferredPlayersList.getCompoundTagAt(i).getString("username"))
 		}
@@ -99,6 +99,7 @@ class TEEmitter(name: String) extends TEWrapper(name) {
 	}
 
 	def getRedstonePower: Int = {
+		this.refreshPlayers()
 		if (!this.getPreferredPlayers.isEmpty) {
 			var numberOfOnlinePlayers: Int = 0
 			for (i <- 0 until this.getPreferredPlayers.size()) {

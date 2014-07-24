@@ -1,7 +1,7 @@
 package com.countrygamer.owneremitter.common.block
 
 import com.countrygamer.cgo.wrapper.common.block.BlockWrapperTE
-import com.countrygamer.owneremitter.common.tile.{TEEmitter, TEOwnerEmitter, TEPlayerEmitter}
+import com.countrygamer.owneremitter.common.tile.TEEmitter
 import net.minecraft.block.material.Material
 import net.minecraft.entity.EntityLivingBase
 import net.minecraft.entity.player.EntityPlayer
@@ -60,33 +60,40 @@ class BlockEmitter(pluginID: String, name: String, itemBlock: Class[_ <: ItemBlo
 			itemStack: ItemStack): Unit = {
 		super.onBlockPlacedBy(world, x, y, z, entity, itemStack)
 
+		// Make sure itemstack was valid
 		if (itemStack == null) return
 
+		// Check entity instances
 		entity match {
+			// if entity is player
 			case player: EntityPlayer =>
 
+				// Get tile entity
 				val tileEntity: TileEntity = world.getTileEntity(x, y, z)
 
+				// Check for player list
 				if (itemStack.hasTagCompound &&
 						itemStack.getTagCompound.hasKey("preferredPlayers")) {
+					// check te instances
 					tileEntity match {
+						// if te is emitter
 						case emitter: TEEmitter =>
+							// set emitter player list from itemstack player list
 							emitter.readPlayersFromNBT(itemStack.getTagCompound)
-						case _ =>
-					}
-				}
-				else {
-					tileEntity match {
-						case emitter: TEOwnerEmitter =>
-							emitter.setOwner(player)
-						case emitter: TEPlayerEmitter =>
 
+						// default
 						case _ =>
+
 					}
 				}
+
+			// default
 			case _ =>
 
 		}
+
+		// Refresh blocks around for emitter power
+		world.notifyBlocksOfNeighborChange(x, y, z, this)
 
 	}
 
