@@ -2,7 +2,7 @@ package com.countrygamer.owneremitter.common.block
 
 import com.countrygamer.cgo.wrapper.common.block.BlockWrapperTE
 import com.countrygamer.owneremitter.common.item.IBEmitter
-import com.countrygamer.owneremitter.common.tile.TEEmitter
+import com.countrygamer.owneremitter.common.tile.{TEEmitter, TEOwnerEmitter, TEPlayerEmitter}
 import net.minecraft.block.material.Material
 import net.minecraft.entity.EntityLivingBase
 import net.minecraft.entity.player.EntityPlayer
@@ -98,9 +98,25 @@ class BlockEmitter(pluginID: String, name: String, tileEntityClass: Class[_ <: T
 		tileEntity match {
 			case emitter: TEEmitter =>
 				if (player.isSneaking) {
-					if (!emitter.removePlayer(player)) {
-						emitter.addPlayer(player)
+
+					emitter match {
+						case owner: TEOwnerEmitter =>
+							if (owner.getPreferredPlayers() >= 1) {
+								owner.removePlayer(player)
+							}
+							else {
+								owner.setOwner(player)
+							}
+
+						case player: TEPlayerEmitter =>
+							if (!emitter.removePlayer(player)) {
+								emitter.addPlayer(player)
+							}
+
+						case _ =>
+
 					}
+
 					world.notifyBlocksOfNeighborChange(x, y, z, this)
 				}
 				else {
