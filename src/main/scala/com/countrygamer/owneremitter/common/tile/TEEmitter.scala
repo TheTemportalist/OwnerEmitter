@@ -55,6 +55,10 @@ class TEEmitter(name: String) extends TEWrapper(name) {
 	}
 
 	def writePlayersToNBT(tagCom: NBTTagCompound): Unit = {
+
+		if (this.preferredPlayers.isEmpty)
+			return
+
 		val preferredPlayersList: NBTTagList = new NBTTagList()
 		for (i <- 0 until this.getPreferredPlayers().size()) {
 			val playerTag: NBTTagCompound = new NBTTagCompound()
@@ -62,6 +66,7 @@ class TEEmitter(name: String) extends TEWrapper(name) {
 			preferredPlayersList.appendTag(playerTag)
 		}
 		tagCom.setTag("preferredPlayers", preferredPlayersList)
+
 	}
 
 	override def readFromNBT(tagCom: NBTTagCompound): Unit = {
@@ -72,11 +77,13 @@ class TEEmitter(name: String) extends TEWrapper(name) {
 	}
 
 	def readPlayersFromNBT(tagCom: NBTTagCompound): Unit = {
+
 		val preferredPlayersList: NBTTagList = tagCom.getTagList("preferredPlayers", 10)
 		this.preferredPlayers.clear()
 		for (i <- 0 until preferredPlayersList.tagCount()) {
 			this.addPlayer(preferredPlayersList.getCompoundTagAt(i).getString("username"))
 		}
+
 	}
 
 	override def updateEntity(): Unit = {
@@ -142,10 +149,11 @@ class TEEmitter(name: String) extends TEWrapper(name) {
 		drops.clear()
 
 		val dropStack: ItemStack = new ItemStack(block, 1, metadata)
-		val tagCom: NBTTagCompound = new NBTTagCompound()
-		this.writePlayersToNBT(tagCom)
-		dropStack.setTagCompound(tagCom)
-
+		if (!this.preferredPlayers.isEmpty) {
+			val tagCom: NBTTagCompound = new NBTTagCompound()
+			this.writePlayersToNBT(tagCom)
+			dropStack.setTagCompound(tagCom)
+		}
 		drops.add(dropStack)
 
 	}
