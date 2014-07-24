@@ -2,6 +2,7 @@ package com.countrygamer.owneremitter.common.block
 
 import com.countrygamer.cgo.wrapper.common.registries.BlockRegister
 import com.countrygamer.owneremitter.common.OwnerEmitter
+import com.countrygamer.owneremitter.common.item.IBOwnerEmitter
 import com.countrygamer.owneremitter.common.tile.{TEOwnerEmitter, TEPlayerEmitter}
 import cpw.mods.fml.common.registry.GameRegistry
 import net.minecraft.block.Block
@@ -34,7 +35,7 @@ object OEBlocks extends BlockRegister {
 	override def register(): Unit = {
 
 		OEBlocks.ownerEmitter = new BlockEmitter(OwnerEmitter.pluginID, "Owner Emitter",
-			classOf[TEOwnerEmitter]) {
+			classOf[IBOwnerEmitter], classOf[TEOwnerEmitter]) {
 
 			override def onBlockPlacedBy(world: World, x: Int, y: Int, z: Int,
 					entity: EntityLivingBase, itemStack: ItemStack): Unit = {
@@ -42,14 +43,14 @@ object OEBlocks extends BlockRegister {
 
 				val tileEntity: TileEntity = world.getTileEntity(x, y, z)
 				tileEntity match {
-					case emitter: TEOwnerEmitter => {
+					case emitter: TEOwnerEmitter =>
 						entity match {
-							case player: EntityPlayer => {
+							case player: EntityPlayer =>
 								emitter.setOwner(player)
-							}
+
 							case _ =>
+
 						}
-					}
 					case _ =>
 				}
 			}
