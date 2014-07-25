@@ -101,16 +101,16 @@ class BlockEmitter(pluginID: String, name: String, tileEntityClass: Class[_ <: T
 
 					emitter match {
 						case owner: TEOwnerEmitter =>
-							if (owner.getPreferredPlayers() >= 1) {
+							if (owner.getPreferredPlayers().size() >= 1) {
 								owner.removePlayer(player)
 							}
 							else {
 								owner.setOwner(player)
 							}
 
-						case player: TEPlayerEmitter =>
-							if (!emitter.removePlayer(player)) {
-								emitter.addPlayer(player)
+						case teplayer: TEPlayerEmitter =>
+							if (!teplayer.removePlayer(player)) {
+								teplayer.addPlayer(player)
 							}
 
 						case _ =>
