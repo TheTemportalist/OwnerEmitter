@@ -15,4 +15,15 @@ class TEOwnerEmitter() extends TEEmitter(OEBlocks.ownerEmitter.getLocalizedName)
 		this.addPlayer(player)
 	}
 
+	def hasOwner(): Boolean = {
+		this.preferredPlayers.size() > 0
+	}
+
+	def getOwner(): String = {
+		if (this.hasOwner()) {
+			return this.preferredPlayers.get(0)
+		}
+		null
+	}
+
 }
