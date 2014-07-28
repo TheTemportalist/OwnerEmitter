@@ -44,7 +44,7 @@ class TEEmitter(name: String) extends TEWrapper(name) {
 	}
 
 	def getPreferredPlayers(): util.List[String] = {
-		return this.preferredPlayers
+		this.preferredPlayers
 	}
 
 	override def writeToNBT(tagCom: NBTTagCompound): Unit = {
