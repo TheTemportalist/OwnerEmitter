@@ -23,6 +23,7 @@ class TEOwnerEmitter() extends TEEmitter(OEBlocks.ownerEmitter.getLocalizedName)
 		if (this.hasOwner()) {
 			return this.preferredPlayers.get(0)
 		}
+
 		null
 	}
 
