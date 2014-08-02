@@ -15,6 +15,12 @@ buildscript {
     }
 }
 
+repositories {
+    maven {
+        url = "http://maven.dries007.net/content/repositories/ccm/"
+    }
+}
+
 apply plugin: 'scala'
 apply plugin: 'forge'
 
@@ -27,11 +33,11 @@ configFile.withReader {
     project.ext.config = new ConfigSlurper().parse prop
 }
 
-group= "com.countrygamer.owneremitter"
+group = "com.countrygamer.owneremitter"
 archivesBaseName = "CoG-OwnerEmitter"
 
 dependencies {
-    compile project(':CGOrigin')
+    compile("com.countrygamer.cgo:CGOrigin:${config.minecraft_version}-3+:dev")
 }
 
 version = "2.0.0"
@@ -47,21 +53,21 @@ minecraft {
 version = "${config.minecraft_version}-$version"
 
 processResources
-{
-    // this will ensure that this task is redone when the versions change.
-    inputs.property "version", project.version
-    inputs.property "mcversion", project.minecraft.version
+        {
+            // this will ensure that this task is redone when the versions change.
+            inputs.property "version", project.version
+            inputs.property "mcversion", project.minecraft.version
 
-    // replace stuff in mcmod.info, nothing else
-    from(sourceSets.main.resources.srcDirs) {
-        include 'mcmod.info'
-                
-        // replace version and mcversion
-        expand 'version':project.version, 'mcversion':project.minecraft.version
-    }
-        
-    // copy everything else, thats not the mcmod.info
-    from(sourceSets.main.resources.srcDirs) {
-        exclude 'mcmod.info'
-    }
-}
+            // replace stuff in mcmod.info, nothing else
+            from(sourceSets.main.resources.srcDirs) {
+                include 'mcmod.info'
+
+                // replace version and mcversion
+                expand 'version': project.version, 'mcversion': project.minecraft.version
+            }
+
+            // copy everything else, thats not the mcmod.info
+            from(sourceSets.main.resources.srcDirs) {
+                exclude 'mcmod.info'
+            }
+        }
