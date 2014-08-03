@@ -34,7 +34,7 @@ configFile.withReader {
 }
 
 group = "com.countrygamer.owneremitter"
-archivesBaseName = "CoG-OwnerEmitter"
+archivesBaseName = "OwnerEmitter"
 
 dependencies {
     compile("com.countrygamer.cgo:CGOrigin:${config.minecraft_version}-3+:dev")

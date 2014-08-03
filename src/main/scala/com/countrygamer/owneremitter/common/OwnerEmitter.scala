@@ -12,7 +12,9 @@ import cpw.mods.fml.common.{Mod, SidedProxy}
  */
 @Mod(modid = OwnerEmitter.pluginID, name = OwnerEmitter.pluginName, version = "@PLUGIN_VERSION@",
 	modLanguage = "scala",
-	guiFactory = "com.countrygamer.owneremitter.client.gui.configFactory.OEFactory")
+	guiFactory = "com.countrygamer.owneremitter.client.gui.configFactory.OEFactory",
+	dependencies = "required-after:Forge@[10.13,);required-after:cgo@[3.0.2,)"
+)
 object OwnerEmitter extends PluginWrapper {
 
 	// TODO owner emitter; drop & place with owner
