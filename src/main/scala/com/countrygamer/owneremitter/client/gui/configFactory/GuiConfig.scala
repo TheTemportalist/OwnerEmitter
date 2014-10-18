@@ -10,6 +10,6 @@ import net.minecraft.client.gui.GuiScreen
  * @author CountryGamer
  */
 class GuiConfig(guiScreen: GuiScreen)
-		extends GuiConfigWrapper(guiScreen, OwnerEmitter.pluginID, OwnerEmitter) {
+		extends GuiConfigWrapper(guiScreen, OwnerEmitter, OwnerEmitter.pluginID) {
 
 }

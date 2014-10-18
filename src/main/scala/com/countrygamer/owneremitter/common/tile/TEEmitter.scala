@@ -3,7 +3,7 @@ package com.countrygamer.owneremitter.common.tile
 import java.util
 import java.util.Random
 
-import com.countrygamer.cgo.common.lib.util.Player
+import com.countrygamer.cgo.library.common.utility.Player
 import com.countrygamer.cgo.wrapper.common.tile.TEWrapper
 import net.minecraft.block.Block
 import net.minecraft.entity.player.EntityPlayer
@@ -172,8 +172,8 @@ class TEEmitter(name: String) extends TEWrapper(name) {
 		}
 
 		if (this.getWorldObj.isRemote) {
-			Player.sendMessageToPlayer(player, "Players following:")
-			Player.sendMessageToPlayer(player, playerListString)
+			Player.message(player, "Players following:")
+			Player.message(player, playerListString)
 		}
 
 	}

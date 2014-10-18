@@ -2,6 +2,7 @@ package com.countrygamer.owneremitter.common
 
 import com.countrygamer.cgo.wrapper.common.ProxyWrapper
 import net.minecraft.entity.player.EntityPlayer
+import net.minecraft.tileentity.TileEntity
 import net.minecraft.world.World
 
 /**
@@ -15,13 +16,13 @@ class CommonProxy() extends ProxyWrapper() {
 
 	}
 
-	override def getClientGuiElement(ID: Int, player: EntityPlayer, world: World, x: Int, y: Int,
-			z: Int): AnyRef = {
+	override def getClientElement(ID: Int, player: EntityPlayer, world: World, x: Int, y: Int,
+			z: Int, tileEntity: TileEntity): AnyRef = {
 		null
 	}
 
-	override def getServerGuiElement(ID: Int, player: EntityPlayer, world: World, x: Int, y: Int,
-			z: Int): AnyRef = {
+	override def getServerElement(ID: Int, player: EntityPlayer, world: World, x: Int, y: Int,
+			z: Int, tileEntity: TileEntity): AnyRef = {
 		null
 	}
 

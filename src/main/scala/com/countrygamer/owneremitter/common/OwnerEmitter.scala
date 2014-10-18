@@ -12,8 +12,8 @@ import cpw.mods.fml.common.{Mod, SidedProxy}
  */
 @Mod(modid = OwnerEmitter.pluginID, name = OwnerEmitter.pluginName, version = "@PLUGIN_VERSION@",
 	modLanguage = "scala",
-	guiFactory = "com.countrygamer.owneremitter.client.gui.configFactory.OEFactory",
-	dependencies = "required-after:Forge@[10.13,);required-after:cgo@[3.0.2,)"
+	guiFactory = OwnerEmitter.clientProxy,
+	dependencies = "required-after:Forge@[10.13,);required-after:cgo@[3.2,)"
 )
 object OwnerEmitter extends PluginWrapper {
 
@@ -23,9 +23,13 @@ object OwnerEmitter extends PluginWrapper {
 
 	final val pluginID = "owneremitter"
 	final val pluginName = "Owner Emitter"
+	final val clientProxy = "com.countrygamer.owneremitter.client.ClientProxy"
+	final val serverProxy = "com.countrygamer.owneremitter.server.ServerProxy"
 
-	@SidedProxy(clientSide = "com.countrygamer.owneremitter.client.ClientProxy",
-		serverSide = "com.countrygamer.owneremitter.common.CommonProxy")
+	@SidedProxy(
+		clientSide = OwnerEmitter.clientProxy,
+		serverSide = OwnerEmitter.serverProxy
+	)
 	var proxy: ProxyWrapper = null
 
 	@Mod.EventHandler

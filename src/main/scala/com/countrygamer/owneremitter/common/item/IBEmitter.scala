@@ -2,7 +2,7 @@ package com.countrygamer.owneremitter.common.item
 
 import java.util
 
-import com.countrygamer.cgo.common.lib.util.UtilKeys
+import com.countrygamer.cgo.library.client.utility.Keys
 import com.countrygamer.owneremitter.common.block.OEBlocks
 import net.minecraft.block.Block
 import net.minecraft.entity.player.EntityPlayer
@@ -22,7 +22,7 @@ class IBEmitter(block: Block) extends ItemBlock(block) {
 
 		list.asInstanceOf[util.List[String]].add("")
 
-		if (!UtilKeys.isShiftKeyDown) {
+		if (!Keys.keyPressed_Shift_Gui()) {
 			list.asInstanceOf[util.List[String]]
 					.add(EnumChatFormatting.BLUE + "Hold SHIFT for players")
 		}

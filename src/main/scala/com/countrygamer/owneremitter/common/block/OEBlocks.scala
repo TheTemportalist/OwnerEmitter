@@ -1,6 +1,6 @@
 package com.countrygamer.owneremitter.common.block
 
-import com.countrygamer.cgo.wrapper.common.registries.BlockRegister
+import com.countrygamer.cgo.library.common.register.BlockRegister
 import com.countrygamer.owneremitter.common.OwnerEmitter
 import com.countrygamer.owneremitter.common.tile.{TEOwnerEmitter, TEPlayerEmitter}
 import cpw.mods.fml.common.registry.GameRegistry
