@@ -1,8 +1,8 @@
-package com.countrygamer.owneremitter.common.block
+package com.temportalist.owneremitter.common.block
 
-import com.countrygamer.cgo.wrapper.common.block.BlockWrapperTE
-import com.countrygamer.owneremitter.common.item.IBEmitter
-import com.countrygamer.owneremitter.common.tile.{TEEmitter, TEOwnerEmitter, TEPlayerEmitter}
+import com.temportalist.origin.wrapper.common.block.BlockWrapperTE
+import com.temportalist.owneremitter.common.item.IBEmitter
+import com.temportalist.owneremitter.common.tile.{TEEmitter, TEOwnerEmitter, TEPlayerEmitter}
 import net.minecraft.block.material.Material
 import net.minecraft.entity.EntityLivingBase
 import net.minecraft.entity.player.EntityPlayer
@@ -13,7 +13,7 @@ import net.minecraft.world.{IBlockAccess, World}
 /**
  *
  *
- * @author CountryGamer
+ * @author TheTemportalist
  */
 class BlockEmitter(pluginID: String, name: String, tileEntityClass: Class[_ <: TileEntity])
 		extends BlockWrapperTE(Material.rock, pluginID, name, classOf[IBEmitter], tileEntityClass) {

@@ -1,12 +1,12 @@
-package com.countrygamer.owneremitter.common
+package com.temportalist.owneremitter.common
 
-import com.countrygamer.cgo.library.common.register.OptionRegister
+import com.temportalist.origin.library.common.register.OptionRegister
 import net.minecraftforge.common.config.Configuration
 
 /**
  *
  *
- * @author CountryGamer
+ * @author TheTemportalist
  */
 object OEOptions extends OptionRegister {
 

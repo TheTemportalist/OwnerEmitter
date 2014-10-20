@@ -1,8 +1,8 @@
-package com.countrygamer.owneremitter.common.block
+package com.temportalist.owneremitter.common.block
 
-import com.countrygamer.cgo.library.common.register.BlockRegister
-import com.countrygamer.owneremitter.common.OwnerEmitter
-import com.countrygamer.owneremitter.common.tile.{TEOwnerEmitter, TEPlayerEmitter}
+import com.temportalist.origin.library.common.register.BlockRegister
+import com.temportalist.owneremitter.common.OwnerEmitter
+import com.temportalist.owneremitter.common.tile.{TEOwnerEmitter, TEPlayerEmitter}
 import cpw.mods.fml.common.registry.GameRegistry
 import net.minecraft.block.Block
 import net.minecraft.creativetab.CreativeTabs
@@ -10,7 +10,7 @@ import net.minecraft.creativetab.CreativeTabs
 /**
  *
  *
- * @author CountryGamer
+ * @author TheTemportalist
  */
 object OEBlocks extends BlockRegister {
 

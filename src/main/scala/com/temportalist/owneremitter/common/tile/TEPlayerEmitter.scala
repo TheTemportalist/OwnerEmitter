@@ -1,9 +1,9 @@
-package com.countrygamer.owneremitter.common.tile
+package com.temportalist.owneremitter.common.tile
 
 /**
  *
  *
- * @author CountryGamer
+ * @author TheTemportalist
  */
 class TEPlayerEmitter() extends TEEmitter("Player Emitter") {
 

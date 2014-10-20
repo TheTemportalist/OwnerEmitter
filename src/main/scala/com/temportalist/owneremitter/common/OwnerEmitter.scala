@@ -1,19 +1,19 @@
-package com.countrygamer.owneremitter.common
+package com.temportalist.owneremitter.common
 
-import com.countrygamer.cgo.wrapper.common.{PluginWrapper, ProxyWrapper}
-import com.countrygamer.owneremitter.common.block.OEBlocks
+import com.temportalist.origin.wrapper.common.{PluginWrapper, ProxyWrapper}
+import com.temportalist.owneremitter.common.block.OEBlocks
 import cpw.mods.fml.common.event.{FMLInitializationEvent, FMLPostInitializationEvent, FMLPreInitializationEvent}
 import cpw.mods.fml.common.{Mod, SidedProxy}
 
 /**
  *
  *
- * @author CountryGamer
+ * @author TheTemportalist
  */
 @Mod(modid = OwnerEmitter.pluginID, name = OwnerEmitter.pluginName, version = "@PLUGIN_VERSION@",
 	modLanguage = "scala",
 	guiFactory = OwnerEmitter.clientProxy,
-	dependencies = "required-after:Forge@[10.13,);required-after:cgo@[3.2,)"
+	dependencies = "required-after:Forge@[10.13,);required-after:origin@[3.3,)"
 )
 object OwnerEmitter extends PluginWrapper {
 

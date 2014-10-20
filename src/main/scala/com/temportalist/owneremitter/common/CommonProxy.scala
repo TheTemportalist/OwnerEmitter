@@ -1,6 +1,6 @@
-package com.countrygamer.owneremitter.common
+package com.temportalist.owneremitter.common
 
-import com.countrygamer.cgo.wrapper.common.ProxyWrapper
+import com.temportalist.origin.wrapper.common.ProxyWrapper
 import net.minecraft.entity.player.EntityPlayer
 import net.minecraft.tileentity.TileEntity
 import net.minecraft.world.World
@@ -8,7 +8,7 @@ import net.minecraft.world.World
 /**
  *
  *
- * @author CountryGamer
+ * @author TheTemportalist
  */
 class CommonProxy() extends ProxyWrapper() {
 

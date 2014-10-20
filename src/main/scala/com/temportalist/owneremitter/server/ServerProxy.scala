@@ -1,6 +1,6 @@
-package com.countrygamer.owneremitter.server
+package com.temportalist.owneremitter.server
 
-import com.countrygamer.owneremitter.common.CommonProxy
+import com.temportalist.owneremitter.common.CommonProxy
 import net.minecraft.entity.player.EntityPlayer
 import net.minecraft.tileentity.TileEntity
 import net.minecraft.world.World
@@ -8,7 +8,7 @@ import net.minecraft.world.World
 /**
  *
  *
- * @author CountryGamer
+ * @author TheTemportalist
  */
 class ServerProxy() extends CommonProxy {
 

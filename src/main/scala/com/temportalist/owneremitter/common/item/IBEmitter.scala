@@ -1,9 +1,9 @@
-package com.countrygamer.owneremitter.common.item
+package com.temportalist.owneremitter.common.item
 
 import java.util
 
-import com.countrygamer.cgo.library.client.utility.Keys
-import com.countrygamer.owneremitter.common.block.OEBlocks
+import com.temportalist.origin.library.client.utility.Keys
+import com.temportalist.owneremitter.common.block.OEBlocks
 import net.minecraft.block.Block
 import net.minecraft.entity.player.EntityPlayer
 import net.minecraft.item.{Item, ItemBlock, ItemStack}
@@ -13,7 +13,7 @@ import net.minecraft.util.EnumChatFormatting
 /**
  *
  *
- * @author CountryGamer
+ * @author TheTemportalist
  */
 class IBEmitter(block: Block) extends ItemBlock(block) {
 

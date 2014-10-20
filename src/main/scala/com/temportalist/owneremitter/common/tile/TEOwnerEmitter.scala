@@ -1,12 +1,12 @@
-package com.countrygamer.owneremitter.common.tile
+package com.temportalist.owneremitter.common.tile
 
-import com.countrygamer.owneremitter.common.block.OEBlocks
+import com.temportalist.owneremitter.common.block.OEBlocks
 import net.minecraft.entity.player.EntityPlayer
 
 /**
  *
  *
- * @author CountryGamer
+ * @author TheTemportalist
  */
 class TEOwnerEmitter() extends TEEmitter(OEBlocks.ownerEmitter.getLocalizedName) {
 

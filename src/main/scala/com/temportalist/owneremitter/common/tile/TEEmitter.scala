@@ -1,10 +1,10 @@
-package com.countrygamer.owneremitter.common.tile
+package com.temportalist.owneremitter.common.tile
 
 import java.util
 import java.util.Random
 
-import com.countrygamer.cgo.library.common.utility.Player
-import com.countrygamer.cgo.wrapper.common.tile.TEWrapper
+import com.temportalist.origin.library.common.utility.Player
+import com.temportalist.origin.wrapper.common.tile.TEWrapper
 import net.minecraft.block.Block
 import net.minecraft.entity.player.EntityPlayer
 import net.minecraft.item.ItemStack
@@ -14,7 +14,7 @@ import net.minecraft.server.MinecraftServer
 /**
  *
  *
- * @author CountryGamer
+ * @author TheTemportalist
  */
 class TEEmitter(name: String) extends TEWrapper(name) {
 

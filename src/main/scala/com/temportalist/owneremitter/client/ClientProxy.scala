@@ -1,8 +1,8 @@
-package com.countrygamer.owneremitter.client
+package com.temportalist.owneremitter.client
 
 import java.util
 
-import com.countrygamer.owneremitter.common.CommonProxy
+import com.temportalist.owneremitter.common.CommonProxy
 import cpw.mods.fml.client.IModGuiFactory
 import cpw.mods.fml.client.IModGuiFactory.{RuntimeOptionCategoryElement, RuntimeOptionGuiHandler}
 import net.minecraft.client.Minecraft
@@ -14,7 +14,7 @@ import net.minecraft.world.World
 /**
  *
  *
- * @author CountryGamer
+ * @author TheTemportalist
  */
 class ClientProxy() extends CommonProxy() with IModGuiFactory {
 
@@ -38,7 +38,7 @@ class ClientProxy() extends CommonProxy() with IModGuiFactory {
 	}
 
 	override def mainConfigGuiClass(): Class[_ <: GuiScreen] = {
-		classOf[com.countrygamer.owneremitter.client.gui.configFactory.GuiConfig]
+		classOf[com.temportalist.owneremitter.client.gui.configFactory.GuiConfig]
 	}
 
 }
